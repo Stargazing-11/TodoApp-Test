@@ -92,7 +92,9 @@ const Todos = () => {
                           borderRadius: "8px 8px 0 0",
                         }}
                         preview={{
-                          src: `http://localhost:5000/${todo.thumbnail}`, // ✅ Enable full preview
+                          src: `${baseURL.replace("/api", "")}${
+                            todo.thumbnail
+                          }`,
                         }}
                       />
                     )
@@ -135,7 +137,7 @@ const Todos = () => {
                   {todo.attachment && (
                     <div style={{ marginBottom: 8 }}>
                       <Typography.Link
-                        href={`${baseURL.replace("/api", "")}/${
+                        href={`${baseURL.replace("/api", "")}${
                           todo.attachment
                         }`}
                         target="_blank"
