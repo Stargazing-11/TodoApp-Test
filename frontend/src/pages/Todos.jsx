@@ -11,7 +11,7 @@ import {
   Col,
   App,
 } from "antd";
-import API from "../services/api";
+import API, { baseURL } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
@@ -83,7 +83,7 @@ const Todos = () => {
                   cover={
                     todo.thumbnail && (
                       <Image
-                        src={`http://localhost:5000/${todo.thumbnail}`}
+                        src={`${baseURL.replace("/api", "")}/${todo.thumbnail}`}
                         alt="thumbnail"
                         height={200}
                         style={{
@@ -134,7 +134,9 @@ const Todos = () => {
                   {todo.attachment && (
                     <div style={{ marginBottom: 8 }}>
                       <Typography.Link
-                        href={`http://localhost:5000/${todo.attachment}`}
+                        href={`${baseURL.replace("/api", "")}/${
+                          todo.attachment
+                        }`}
                         target="_blank"
                         style={{ display: "block" }}
                       >
