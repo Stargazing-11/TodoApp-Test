@@ -43,8 +43,12 @@ A modern full-stack Todo App with user authentication, file uploads, and clean U
 ---
 
 ## 📸 Screenshots
-
-_Coming soon (or add your own)_
+![image](https://github.com/user-attachments/assets/36b1fda2-c2a1-4cc6-ab6a-aaa1e788b72e)
+![image](https://github.com/user-attachments/assets/fa44b881-5647-4a06-9189-16af68b26d02)
+![image](https://github.com/user-attachments/assets/55ac50e6-88f4-427b-bdc7-db51d24b3727)
+![image](https://github.com/user-attachments/assets/dd8e10fc-35a1-4d93-8a93-a447d0a03f2d)
+![image](https://github.com/user-attachments/assets/9c244b66-8f72-415c-806e-fc3cea72fc9a)
+![image](https://github.com/user-attachments/assets/eb657dba-bc69-46ef-bb0b-09f9f5ae0d81)
 
 ---
 
@@ -53,7 +57,7 @@ _Coming soon (or add your own)_
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/todo-app.git
+git clone https://github.com/Stargazing-11/TodoApp-Test
 cd todo-app
 ```
 
@@ -132,4 +136,4 @@ PRs and feedback welcome — this was originally built as a test project and I�
 
 ## 🙋‍♂️ Author
 
-- **Samuel Kifle** – [@samuel](https://github.com/your-github)
+- **Samuel Kifle** – https://github.com/Stargazing-11
