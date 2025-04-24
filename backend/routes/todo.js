@@ -27,6 +27,14 @@ router.post(
     const thumbnail = req.files["thumbnail"]?.[0]?.path;
     const attachment = req.files["attachment"]?.[0]?.path;
 
+    console.log("Creating todo:", {
+      title,
+      description,
+      tags,
+      thumbnail,
+      attachment,
+    });
+
     try {
       const todo = new Todo({
         title,
@@ -52,6 +60,8 @@ router.get("/", auth, async (req, res) => {
   if (search) query.title = { $regex: search, $options: "i" };
   if (tags) query.tags = { $all: tags.split(",") };
 
+  console.log("Fetching todos with query:", query);
+
   try {
     const todos = await Todo.find(query)
       .skip((page - 1) * limit)
@@ -65,6 +75,7 @@ router.get("/", auth, async (req, res) => {
 
 // Read one
 router.get("/:id", auth, async (req, res) => {
+  console.log("Fetching todo with ID:", req.params.id);
   try {
     const todo = await Todo.findOne({ _id: req.params.id, owner: req.user.id });
     if (!todo) return res.status(404).json({ msg: "Not found" });
@@ -86,6 +97,13 @@ router.put(
       description,
       tags: tags ? tags.split(",") : [],
     };
+
+    console.log(
+      "Updating todo with ID:",
+      req.params.id,
+      "with data:",
+      updateData
+    );
 
     if (req.files["thumbnail"])
       updateData.thumbnail = req.files["thumbnail"][0].path;
@@ -113,6 +131,8 @@ router.delete("/:id", auth, async (req, res) => {
       _id: req.params.id,
       owner: req.user.id,
     });
+
+    console.log("Deleting todo with ID:", req.params.id);
     if (!todo) return res.status(404).json({ msg: "Not found" });
     res.json({ msg: "Deleted" });
   } catch (err) {
