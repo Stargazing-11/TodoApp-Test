@@ -103,6 +103,71 @@ npm run dev
 
 ---
 
+## 🛠️ Database Setup
+
+This project uses **MongoDB Atlas** for cloud-based storage, but you can also use a local MongoDB instance.
+
+### 1. Setup MongoDB Atlas (Cloud)
+
+1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+2. Create a free cluster (`M0` tier)
+3. Add a user:
+   - Username: `todo_user`
+   - Password: `secure1234`
+4. Whitelist IPs: Add `0.0.0.0/0` (Allow from Anywhere)
+5. Get your connection URI:
+   ```
+   mongodb+srv://todo_user:secure1234@your-cluster.mongodb.net/todoapp?retryWrites=true&w=majority
+   ```
+
+6. Add the URI to your `.env`:
+
+```env
+MONGO_URI=mongodb+srv://todo_user:secure1234@cluster.mongodb.net/todoapp?retryWrites=true&w=majority
+```
+
+---
+
+### 2. Setup Local MongoDB (Optional)
+
+Install MongoDB locally and run:
+
+```bash
+brew services start mongodb-community
+```
+
+Then use:
+
+```env
+MONGO_URI=mongodb://localhost:27017/todoapp
+```
+
+---
+
+### 3. Manually Create a Test User (if needed)
+
+If you want to insert a test user manually (without using the register endpoint), connect to MongoDB and run:
+
+```js
+use todoapp
+
+db.users.insertOne({
+  email: "test@example.com",
+  password: "<bcrypt-hashed-password>",
+})
+```
+
+> 💡 Password must be **hashed using bcrypt**. You can generate it using this Node.js script:
+
+```js
+const bcrypt = require("bcrypt");
+bcrypt.hash("yourpassword", 10).then(console.log);
+```
+
+Use the generated hash in the `password` field above.
+
+---
+
 ## ⚙️ Folder Structure
 
 ```
