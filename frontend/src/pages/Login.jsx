@@ -9,6 +9,8 @@ import {
   Col,
   App,
 } from "antd";
+import { Link } from "react-router-dom";
+
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
@@ -62,6 +64,9 @@ const Login = () => {
               Login
             </Button>
           </Form>
+          <Typography.Text>
+            Don’t have an account? <Link to="/register">Register here</Link>
+          </Typography.Text>
         </Card>
       </Col>
     </Row>
