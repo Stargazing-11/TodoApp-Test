@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Button, Form, Input, Upload, Card, Select, message } from "antd";
+import { Button, Form, Input, Upload, Card, Select, App } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import API from "../services/api";
 
 const TodoForm = () => {
+  const { message } = App.useApp();
   const { id } = useParams();
   const navigate = useNavigate();
   const [form] = Form.useForm();
@@ -43,7 +44,8 @@ const TodoForm = () => {
       }
       navigate("/");
     } catch (err) {
-      message.error("Operation failed");
+      const errorMsg = err.response?.data?.msg || "Failed to save to-do";
+      message.error(errorMsg);
     }
   };
 

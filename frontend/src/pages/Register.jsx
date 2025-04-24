@@ -1,8 +1,9 @@
-import { Button, Form, Input, Typography, Card } from "antd";
+import { Button, Form, Input, Card, App } from "antd";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
 
 const Register = () => {
+  const { message } = App.useApp();
   const navigate = useNavigate();
 
   const handleFinish = async (values) => {
@@ -11,16 +12,21 @@ const Register = () => {
         email: values.email,
         password: values.password,
       });
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
+      message.success("Registration successful");
       navigate("/login");
     } catch (err) {
       console.error("Registration failed", err);
+      message.error(err.response?.data?.msg || "Registration failed");
     }
   };
 
   return (
     <Card
       title="Register"
-      style={{ maxWidth: 400, margin: "auto", marginTop: "10vh" }}
+      style={{ maxWidth: 500, margin: "auto", marginTop: "10vh" }}
     >
       <Form layout="vertical" onFinish={handleFinish}>
         <Form.Item
