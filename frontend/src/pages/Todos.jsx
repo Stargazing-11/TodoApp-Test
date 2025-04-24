@@ -84,7 +84,7 @@ const Todos = () => {
                   cover={
                     todo.thumbnail && (
                       <Image
-                        src={`${baseURL.replace("/api", "")}/${todo.thumbnail}`}
+                        src={`${baseURL.replace("/api", "")}${todo.thumbnail}`}
                         alt="thumbnail"
                         height={200}
                         style={{
