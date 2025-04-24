@@ -101,9 +101,7 @@ Then:
 npm run dev
 ```
 
----
-
-## 🛠️ Database Setup
+### 4. Database Setup
 
 This project uses **MongoDB Atlas** for cloud-based storage, but you can also use a local MongoDB instance.
 
@@ -111,17 +109,16 @@ This project uses **MongoDB Atlas** for cloud-based storage, but you can also us
 
 1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
 2. Create a free cluster (`M0` tier)
-3. Add a user:
+3. Add a user, Example:
    - Username: `todo_user`
    - Password: `secure1234`
 4. Whitelist IPs: Add `0.0.0.0/0` (Allow from Anywhere)
-5. Get your connection URI:
+5. Get your connection URI (example):
    ```
    mongodb+srv://todo_user:secure1234@your-cluster.mongodb.net/todoapp?retryWrites=true&w=majority
    ```
 
 6. Add the URI to your `.env`:
-
 ```env
 MONGO_URI=mongodb+srv://todo_user:secure1234@cluster.mongodb.net/todoapp?retryWrites=true&w=majority
 ```
