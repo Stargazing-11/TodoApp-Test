@@ -111,14 +111,19 @@ router.put(
       updateData.attachment = req.files["attachment"][0].path;
 
     try {
+      console.log("Todo update data:", updateData);
       const todo = await Todo.findOneAndUpdate(
         { _id: req.params.id, owner: req.user.id },
         updateData,
         { new: true }
       );
+      console.log("Todo found:", todo);
       if (!todo) return res.status(404).json({ msg: "Not found" });
+
+      console.log("Todo updated successfully:", todo);
       res.json(todo);
     } catch (err) {
+      console.error("Error updating todo:", err);
       res.status(500).json({ msg: err.message });
     }
   }
